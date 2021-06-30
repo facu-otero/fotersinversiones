@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- link con Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- link con hoja de estilos -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Roboto+Condensed:wght@300&display=swap"
+        rel="stylesheet">
+    <!-- Iconos -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <!-- Animaciones -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Whatsapp icon -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <title>FO Inversiones</title>
+    <link rel="shortcut icon" type="image/x-icon" href="photos/Captura2.ico">
+</head>
+
+<body>
+
+    
+    <!-- contenedor para mantener la navbar arriba -->
+    <div class="fixed-top">
+
+        <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="index.html"><img src="photos/Captura1.JPG"alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#simulador">Simulador</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cotizaciones
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#cardAccion">Acciones</a>
+                            <a class="dropdown-item" href="#cardCripto">Criptomonedas</a>
+                            <a class="dropdown-item" href="#cardDivisa">Divisas</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#aboutUs">¿Por qué elegirnos?</a>
+                    </li>
+
+                    <!--  <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li> -->
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+                <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fi-rr-user-add"></i>
+                    Registrarse</button>
+                <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fi-rr-user"></i> Ingresar</button>
+            </div>
+        </nav>
+    </div>
+    <img class="portada" src="photos/img1.jpg">
+    <div class="container">
+
+        <!-- Simulador de inversiones -->
+        <div data-aos="fade-left">
+
+            <div id="simulador">
+                
+                <h1> Simula tu inversion </h1>
+                <div class="card-group">
+                    <div class="card">
+                        
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Simulador</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Completar info requerida</h5>
+                                <div class="card-text">
+                                    <form method="POST" class="formulario">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlInput1">importe a invertir</label>
+                                            <!-- aca ingreso el importe con el cual voy a simular la inversion -->
+                                            <input type="number" class="form-control" id="importeInversion"
+                                            placeholder="Ej: 100">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Selecciona un activo</label>
+                                            <select class="form-control" id="activoSel">
+                                                <option>Seleccion una opcion</option>
+                                                <option>APPL</option>
+                                                <option>MELI</option>
+                                                <option>DIS</option>
+                                                <option>TSLA</option>
+                                                <option>FB</option>
+                                                <option>BTC</option>
+                                                <option>ETH</option>
+                                                <option>LTC</option>
+                                                <!-- aca agrego las opciones de activos a invertir, seleccionandolo despues toma la cotizaciony simulo rendimiento -->
+                                                
+                                                <div id="opcionActivos">
+                                                    
+                                                </div>
+                                            </select>
+                                        </div>
+                                        
+                                        <input type="submit" value="Simular" class="btn btn-primary" onclick="simular()">
+                                        
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="imagenSimulador"><img src="photos/home-simulador.jpg" alt=""></div>
+                <div class="card">
+                    
+                    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Resultado Simulador</div>
+                        <div class="card-body">
+                            
+                            <div class="card-text">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">Activo simulado</label>
+                                        <!-- aca van los datos del rendimiento -->
+                                        <div id="act">
+
+                                        </div>                                          
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">Monto inversion</label>
+                                        <!-- aca van los datos del rendimiento -->
+                                        <div id="imp">
+
+                                        </div>                                          
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">Rendimiento Proyectado</label>
+                                        <!-- aca van los datos del rendimiento -->
+                                        <div id="ren">
+
+                                        </div>                                          
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput1">Cotizacion</label>
+                                        <!-- aca inserto los datos de la simulacion -->
+                                        <div id="cot">
+                                        
+                                        </div>
+                                    </div>
+                                    
+                                    <input type="submit" value="Refrescar" class="btn btn-primary" onclick="refrescar()">
+                                    
+                                </form>
+                                <!-- <div class="simulacion">
+                                    
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--  <h1> Simula tu inversion </h1>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Example select</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    
+                </form> -->
+                <!-- seleccionar activo -->
+                
+                
+            </div>
+        </div>
+        <div class="whatsAppIcon">
+            <a href="https://api.whatsapp.com/send?phone=+5493584384217&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20inversiones%20." class="float" target="_blank">
+                <i class="fa fa-whatsapp my-float"></i>
+                </a>
+        </div>
+
+        <!-- Cotizacion de Acciones -->
+        <h1>Cotizacion de Acciones</h1>
+        <div class="container">
+            <div id="cardAccion" class="row">
+                
+            </div>
+        </div>
+        
+
+        <!-- Cotizacion de Critpos -->
+        <h1>Cotizacion de Criptomonedas</h1>
+        <div class="container">
+
+            <div id="cardCripto" class="row">
+                
+            </div>
+        </div>
+
+        <!-- Cotizacion de Divisas -->
+        <h1>Cotizacion de Divisas</h1>
+        <div class="container">
+            
+            <div id="cardDivisa" class="row">
+            
+            </div>
+        </div>
+
+
+        <div id="aboutUs">
+            <h1>¿Por qué elegirnos?</h1>
+            <h2>Cotización en Tiempo Real</h2>
+            <p>Una de las claves a la hora de invertir en Bolsa, es aprovechar las oportunidades en el momento indicado, ni un minuto antes ni un minuto después. Al abrir una cuenta de inversión en invertirOnline.com, accederás a las cotizaciones de todos los instrumentos, según cada mercado, en tiempo real. Así podrás optimizar al máximo tus inversiones y rentabilidad.</p>
+            <h2>Asesoramiento profesional</h2>
+            <p>Tendrás a disposición información y herramientas financieras para que adaptes a tus preferencias. Nuestro equipo de profesionales financieros siempre estará dispuesto a asistir de forma personalizada a todas tus consultas. Nuestro objetivo es acompañarte para que las decisiones que tomes sean en base a información idónea del mercado.</p>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- <script src="js/main.js"></script> -->
+        <script src="js/main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+      
+    <footer>© Foters Inversiones todos los derechos reservados 2021</footer>
+</body>
+
+</html>
