@@ -1,0 +1,185 @@
+
+//Funcion para crear un objeto de una determinada inversion
+function activo(img, nombreInstrumento, id, cotizacion, rendimiento, grafico) {
+  this.img = img;
+  this.id = id;
+  this.nombreInstrumento = nombreInstrumento;
+  this.cotizacion = cotizacion;
+  this.rendimiento = rendimiento;
+  this.grafico = grafico;
+}
+//************************************************************* */
+//creo los distintos objetos
+
+//acciones
+const appl = new activo("./photos/cards/appl.png","Apple", "APPL", 135, 40, "https://es.tradingview.com/chart/");
+const meli = new activo("./photos/cards/meli.jpg","Mercado Libre", "MELI", 1595, 20, "https://es.tradingview.com/chart/");
+const tsla = new activo("./photos/cards/tsla.jpg","Tesla Corp.", "TSLA", 850, 35, "https://es.tradingview.com/chart/");
+const dis = new activo("./photos/cards/dis.png","Walt Disney World Co.", "DIS", 170, 15, "https://es.tradingview.com/chart/");
+const fb = new activo("./photos/cards/fb.jpg","Facebook", "FB", 350, "0.25", "https://es.tradingview.com/chart/");
+//criptos
+const btc = new activo("./photos/cards/btc.jpg","Bitcoin", "BTCUSD", 32300, 25, "https://es.tradingview.com/chart/");
+const ltc = new activo("./photos/cards/ltc.jpg","Litecoin", "LTCUSD", 165, 10, "https://es.tradingview.com/chart/");
+const eth = new activo("./photos/cards/eth.jpg","Etherium", "ETHUSD", 2953, 15, "https://es.tradingview.com/chart/");
+//dolar
+const usdD = new activo("./photos/cards/usd.jpg","Dolar Divisa", "USDD", 98, 10, "https://es.tradingview.com/chart/");
+const usdB = new activo("./photos/cards/usd.jpg","Dolar Billete", "USDB", 103, 10, "https://es.tradingview.com/chart/");
+const usdBlue = new activo("./photos/cards/usd.jpg","Dolar Blue", "USDBLUE", 158, 10, "https://es.tradingview.com/chart/");
+// Creo los Array con los distintos grupos de activos
+
+let cardAccionArray = [appl, meli, tsla, dis, fb]
+let cardCriptoArray = [btc, ltc, eth]
+let cardDivisaArray = [usdD, usdB, usdBlue]
+
+//contenedor de los Arrays
+
+let cardsContainer = [cardAccionArray, cardCriptoArray, cardDivisaArray]
+
+/* guardamos en variables los contenedores padre de las cards: */
+const cardAccion = document.querySelector("#cardAccion");
+const cardCripto = document.querySelector("#cardCripto");
+const cardDivisa = document.querySelector("#cardDivisa");
+// Crear un arreglo de contenedores para asociar con las cards
+const containers = [cardAccion, cardCripto, cardDivisa]
+
+
+//**************************************************************************** */
+/* creamos dinamicamente las cards: */
+
+for (i = 0; i <= cardsContainer.length; i++) {
+  let htmlCode = "";
+    for (cards in cardsContainer[i]) {
+        let card = cardsContainer[i][cards];
+        let img = card["img"];
+        let nombreInstrumento = card["nombreInstrumento"];
+        let id = card["id"];
+        let cotizacion = card["cotizacion"];
+        let rendimiento = card["rendimiento"];
+        let grafico = card["grafico"];
+        htmlCode += `
+
+
+<div class="card" class="col-sm">
+<div class="card h-100">
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+<div class="card-header">${nombreInstrumento}</div>
+<img class="card__img" src="${img}"alt="">
+<p class="card__content">Denominacion: ${id}</p>
+<p class="card__content">Cotizacion: USD ${cotizacion}</p>
+<p class="card__content">Rendimiento Estimado: ${rendimiento}%</p>
+
+<a href="${grafico}" class="card__button">Ver Grafico</a>
+</div>
+</div>
+</div>
+`;
+    };
+    containers[i].innerHTML = htmlCode
+}
+
+
+//**************************************************************************************************** */
+
+//Guardo las variables de los nombres de los activos para simular
+const simulador = document.querySelector("#opcionActivos")
+const simImpInv = document.querySelector("#importeInversion")
+//agrego en la tarjeta de simulacion los ID de los activos en los que puedo invertir
+
+for (i = 0; i <= cardsContainer.length; i++) {
+  let htmlCode = "";
+  for (cards in cardsContainer[i]) {
+    let card = cardsContainer[i][cards];
+    let id = card["id"];
+    htmlCode += `
+    
+    <option>${id}</option>
+`;
+};
+  simulador[i].innerHTML = htmlCode
+}
+
+/* y por ultimo las agregamos al documento html: */
+
+
+
+  //************************************************************************************* */
+  //Simulador
+  //Creo la variables con el nombre del objeto de cada uno de los activos 
+  let APPL = appl
+  let MELI = meli
+  let TSLA = tsla
+  let DIS = dis
+  let FB = fb
+  let BTC = btc
+  let ETH = eth
+  let LTC = ltc
+  
+  const contenedorSimulador = [APPL, MELI, TSLA, DIS, FB, BTC, ETH, LTC]
+
+    
+    let inversion = document.querySelector('#importeInversion')
+    let activoSub = document.querySelector('#activoSel')
+    let actSimulado = 0
+    const form = document.querySelector('.formulario')
+    
+    let ren = 0
+    let cot = 0
+    let act = ""
+    let imp = 0
+    let rendimiento = document.querySelector('#ren')
+    let cotizacion = document.querySelector('#cot')
+    let activoASimular = document.querySelector('#act')
+    let monto = document.querySelector('#imp')
+
+    
+
+ function getDataSim(){
+  
+  let seleccion = document.getElementById("activoSel").value;
+  console.log(seleccion);
+  let importeSel = document.getElementById("importeInversion").value;
+  console.log(importeSel)
+  ren = seleccion.value[5]*importeSel
+  console.log(ren)
+}
+
+
+
+
+
+/*     const simuladorDeActivos = function agregarSimulador (){
+      //monto simulado
+      imp = number(evt.target[0].value)
+      console.log(imp)
+      //document.getElementById("imp").innerHTML = `<p>$ ${imp}<p>`
+      //activo simulado
+      act = activoASimular.value
+      console.log(act)
+      //document.getElementById("act").innerHTML = `<p>$ ${act}<p>`
+      //rentabilidad
+      //ren = imp +* rentabilidad de activo seleccionado
+      
+      ren = act[5]*+imp
+      console.log(ren)
+      //document.getElementById("ren").innerHTML = `<p>$ ${ren}<p>`
+      
+      
+    }
+
+    form.addEventListener('submit', (evt)=>{
+      evt.preventDefault()
+      agregarSimulador()
+    })
+ */
+    /* form.addEventListener('submit', (evt)=>{
+        evt.preventDefault()
+        let htmlCode = ""
+        htmlCode +=               
+        num = Number(evt.target[0].value)
+        rendimiento.value = num
+        cot = 165
+        cotizacion.value = cot
+    })
+ */
+
+    
