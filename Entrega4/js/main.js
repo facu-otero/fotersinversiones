@@ -139,8 +139,8 @@ for (i = 0; i <= cardsContainer.length; i++) {
   console.log(seleccion);
   let importeSel = document.getElementById("importeInversion").value;
   console.log(importeSel)
-  ren = seleccion.value[5]*importeSel
-  console.log(ren)
+  let actRen = cardAccionArray.indexOf(seleccion.toLowerCase())
+  console.log(actRen)
 }
 
 
