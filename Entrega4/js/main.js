@@ -12,19 +12,19 @@ function activo(img, nombreInstrumento, id, cotizacion, rendimiento, grafico) {
 //creo los distintos objetos
 
 //acciones
-const appl = new activo("./photos/cards/appl.png","Apple", "APPL", 135, 40, "https://es.tradingview.com/chart/");
-const meli = new activo("./photos/cards/meli.jpg","Mercado Libre", "MELI", 1595, 20, "https://es.tradingview.com/chart/");
-const tsla = new activo("./photos/cards/tsla.jpg","Tesla Corp.", "TSLA", 850, 35, "https://es.tradingview.com/chart/");
-const dis = new activo("./photos/cards/dis.png","Walt Disney World Co.", "DIS", 170, 15, "https://es.tradingview.com/chart/");
-const fb = new activo("./photos/cards/fb.jpg","Facebook", "FB", 350, "0.25", "https://es.tradingview.com/chart/");
+const appl = new activo("./photos/cards/appl.png","Apple", "APPL", 135, 40, "https://es.tradingview.com/symbols/NASDAQ-AAPL/");
+const meli = new activo("./photos/cards/meli.jpg","Mercado Libre", "MELI", 1595, 20, "https://es.tradingview.com/symbols/NASDAQ-MELI/");
+const tsla = new activo("./photos/cards/tsla.jpg","Tesla Corp.", "TSLA", 850, 35, "https://es.tradingview.com/symbols/NASDAQ-TSLA/");
+const dis = new activo("./photos/cards/dis.png","Walt Disney World Co.", "DIS", 170, 15, "https://es.tradingview.com/symbols/NYSE-DIS/");
+const fb = new activo("./photos/cards/fb.jpg","Facebook", "FB", 350, "0.25", "https://es.tradingview.com/symbols/NASDAQ-FB/");
 //criptos
-const btc = new activo("./photos/cards/btc.jpg","Bitcoin", "BTCUSD", 32300, 25, "https://es.tradingview.com/chart/");
-const ltc = new activo("./photos/cards/ltc.jpg","Litecoin", "LTCUSD", 165, 10, "https://es.tradingview.com/chart/");
-const eth = new activo("./photos/cards/eth.jpg","Etherium", "ETHUSD", 2953, 15, "https://es.tradingview.com/chart/");
+const btc = new activo("./photos/cards/btc.jpg","Bitcoin", "BTCUSD", 32300, 25, "https://es.tradingview.com/chart/?symbol=BITSTAMP%3ABTCUSD");
+const ltc = new activo("./photos/cards/ltc.jpg","Litecoin", "LTCUSD", 165, 10, "https://es.tradingview.com/symbols/LTCUSD/");
+const eth = new activo("./photos/cards/eth.jpg","Etherium", "ETHUSD", 2953, 15, "https://es.tradingview.com/chart/?symbol=BITSTAMP%3AETHUSD");
 //dolar
-const usdD = new activo("./photos/cards/usd.jpg","Dolar Divisa", "USDD", 98, 10, "https://es.tradingview.com/chart/");
-const usdB = new activo("./photos/cards/usd.jpg","Dolar Billete", "USDB", 103, 10, "https://es.tradingview.com/chart/");
-const usdBlue = new activo("./photos/cards/usd.jpg","Dolar Blue", "USDBLUE", 158, 10, "https://es.tradingview.com/chart/");
+const usdD = new activo("./photos/cards/usd.jpg","Dolar Divisa", "USDD", 98, 10, "https://es.tradingview.com/symbols/USDARS/");
+const usdB = new activo("./photos/cards/usd.jpg","Dolar Billete", "USDB", 103, 10, "https://es.tradingview.com/symbols/USDARS/");
+const usdBlue = new activo("./photos/cards/usd.jpg","Dolar Blue", "USDBLUE", 177, 10, "https://es.tradingview.com/symbols/USDARS/");
 // Creo los Array con los distintos grupos de activos
 
 let cardAccionArray = [appl, meli, tsla, dis, fb]
@@ -85,7 +85,7 @@ const simulador = document.querySelector("#opcionActivos")
 const simImpInv = document.querySelector("#importeInversion")
 //agrego en la tarjeta de simulacion los ID de los activos en los que puedo invertir
 
-for (i = 0; i <= cardsContainer.length; i++) {
+/* for (i = 0; i <= cardsContainer.length; i++) {
   let htmlCode = "";
   for (cards in cardsContainer[i]) {
     let card = cardsContainer[i][cards];
@@ -96,90 +96,48 @@ for (i = 0; i <= cardsContainer.length; i++) {
 `;
 };
   simulador[i].innerHTML = htmlCode
-}
+} */
 
 /* y por ultimo las agregamos al documento html: */
 
 
 
   //************************************************************************************* */
-  //Simulador
-  //Creo la variables con el nombre del objeto de cada uno de los activos 
-  let APPL = appl
-  let MELI = meli
-  let TSLA = tsla
-  let DIS = dis
-  let FB = fb
-  let BTC = btc
-  let ETH = eth
-  let LTC = ltc
-  
-  const contenedorSimulador = [APPL, MELI, TSLA, DIS, FB, BTC, ETH, LTC]
+ 
 
     
-    let inversion = document.querySelector('#importeInversion')
-    let activoSub = document.querySelector('#activoSel')
-    let actSimulado = 0
-    const form = document.querySelector('.formulario')
-    
-    let ren = 0
-    let cot = 0
-    let act = ""
-    let imp = 0
-    let rendimiento = document.querySelector('#ren')
-    let cotizacion = document.querySelector('#cot')
-    let activoASimular = document.querySelector('#act')
-    let monto = document.querySelector('#imp')
+ //Funcion simulador   
 
     
-
  function getDataSim(){
   
-  let seleccion = document.getElementById("activoSel").value;
-  console.log(seleccion);
+  let seleccion = document.getElementById("activoSel").value.toLowerCase();
   let importeSel = document.getElementById("importeInversion").value;
-  console.log(importeSel)
-  let actRen = cardAccionArray.indexOf(seleccion.toLowerCase())
-  console.log(actRen)
+  const rendimientoAct = {
+    appl: appl.rendimiento,
+    meli: meli.rendimiento,
+    tsla: tsla.rendimiento,
+    dis: dis.rendimiento,
+    fb: fb.rendimiento,
+    btc: btc.rendimiento,
+    ltc: ltc.rendimiento,
+    eth: eth.rendimiento,
+    
+
+  }
+ const activoSimulado = rendimientoAct[seleccion] 
+ const rendimientoInversion = (activoSimulado/100) * importeSel
+console.log(rendimientoInversion)
+  
+  document.getElementById("act").innerHTML = seleccion.toUpperCase()
+  document.getElementById("imp").innerHTML = `$ `+ importeSel
+  document.getElementById("ren").innerHTML = `$ `+ rendimientoInversion
+  
+  
 }
 
 
 
 
-
-/*     const simuladorDeActivos = function agregarSimulador (){
-      //monto simulado
-      imp = number(evt.target[0].value)
-      console.log(imp)
-      //document.getElementById("imp").innerHTML = `<p>$ ${imp}<p>`
-      //activo simulado
-      act = activoASimular.value
-      console.log(act)
-      //document.getElementById("act").innerHTML = `<p>$ ${act}<p>`
-      //rentabilidad
-      //ren = imp +* rentabilidad de activo seleccionado
-      
-      ren = act[5]*+imp
-      console.log(ren)
-      //document.getElementById("ren").innerHTML = `<p>$ ${ren}<p>`
-      
-      
-    }
-
-    form.addEventListener('submit', (evt)=>{
-      evt.preventDefault()
-      agregarSimulador()
-    })
- */
-    /* form.addEventListener('submit', (evt)=>{
-        evt.preventDefault()
-        let htmlCode = ""
-        htmlCode +=               
-        num = Number(evt.target[0].value)
-        rendimiento.value = num
-        cot = 165
-        cotizacion.value = cot
-    })
- */
 
     

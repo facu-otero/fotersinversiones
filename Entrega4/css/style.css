@@ -112,3 +112,18 @@ footer{
 .card-header{
 font-size: 22px;
 }
+ #act{
+     background-color: rgb(163, 161, 158);
+     color: black;     
+     font-weight: bold;     
+ }
+ #imp{
+    background-color: rgb(163, 161, 158);
+    color: black;     
+    font-weight: bold;     
+}
+#ren{
+    background-color: rgb(163, 161, 158);
+    color: black;     
+    font-weight: bold;     
+}

@@ -68,7 +68,7 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar</button>
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit" id="buscar">Buscar</button>
                 </form>
                 <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fi-rr-user-add"></i>
                     Registrarse</button>
@@ -86,7 +86,7 @@
                 
                 <h1> Simula tu inversion </h1>
                 <div class="card-group">
-                    <div class="card">
+                    <div name="simForm" class="card">
                         
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-header">Simulador</div>
@@ -95,14 +95,14 @@
                                 <div class="card-text">
                                     <form method="POST" class="formulario">
                                         <div class="form-group">
-                                            <label for="exampleFormControlInput1">importe a invertir</label>
+                                            <label for="exampleFormControlInput1">importe a invertir:</label>
                                             <!-- aca ingreso el importe con el cual voy a simular la inversion -->
                                             <input type="number" class="form-control" id="importeInversion"
                                             placeholder="Ej: 100">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Selecciona un activo</label>
-                                            <select class="form-control" id="activoSel">
+                                            <label for="selector">Selecciona un activo</label>
+                                            <select name="opSel" class="form-control" id="activoSel">
                                                 <option>Seleccion una opcion</option>
                                                 <option>APPL</option>
                                                 <option>MELI</option>
@@ -119,7 +119,7 @@
                                                 </div>
                                             </select>
                                         </div>
-                                        
+                                        <!-- Agregarle al boton que si no selecciona una opcion ni pone monto por favor realice la carga de datos obligatorios -->
                                         <button type="button" class="btn btn-primary" id="btnSimulador" onclick="getDataSim()">Simular</button>
                                         <!-- <input type="submit" value="Simular" class="btn btn-primary"> -->
                                         
@@ -138,33 +138,27 @@
                             <div class="card-text">
                                 <form>
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1">Activo simulado</label>
+                                        <label for="exampleFormControlInput1">Denominacion activo:</label>
                                         <!-- aca van los datos del rendimiento -->
                                         <div id="act">
 
                                         </div>                                          
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1">Monto inversion</label>
+                                        <label for="exampleFormControlInput1">Monto inversion:</label>
                                         <!-- aca van los datos del rendimiento -->
                                         <div id="imp">
 
                                         </div>                                          
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlInput1">Rendimiento Proyectado</label>
+                                        <label for="exampleFormControlInput1">Rendimiento Proyectado:</label>
                                         <!-- aca van los datos del rendimiento -->
                                         <div id="ren">
 
                                         </div>                                          
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleFormControlInput1">Cotizacion</label>
-                                        <!-- aca inserto los datos de la simulacion -->
-                                        <div id="cot">
-                                        
-                                        </div>
-                                    </div>
+                                    
                                     
                                     <input type="submit" value="Refrescar" class="btn btn-primary" onclick="refrescar()">
                                     
