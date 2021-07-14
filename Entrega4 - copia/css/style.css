@@ -1,0 +1,129 @@
+:root {	
+        font-size: 16px;
+        background-color:#fff;        
+        font-family: 'Oswald', sans-serif;        
+        font-weight: 500;
+        color: black;
+}
+body{
+    font-family: 'Oswald', sans-serif; 
+    text-align: center;
+    justify-content: center;
+}    
+
+
+h1{
+    justify-content: center;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    text-align: center;
+    font-weight: bolder;
+}
+
+/* h2{
+    font-size: 20px;
+    padding-top: 2rem;
+} */
+.container{
+    
+    justify-content: center;
+    margin: auto;
+    padding: auto; 
+}
+
+img.portada{
+    width: 100vw;
+    height: auto;
+    padding-bottom: 3rem;
+}
+
+
+.imagenSimulador{
+    height: max-content;
+}
+
+#simulador > .card-group > .card{
+    background-color: darkgrey;
+    margin: 0%;
+    padding: 0%;
+    min-width: 20%;
+}
+
+#simulador > .card-group {
+    background-color: darkgrey;
+    margin: 0%;
+    padding: 0%;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	
+  z-index:100;
+}
+.float:hover {
+	text-decoration: none;
+	color: #25d366;
+  background-color:#fff;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+.card__img{
+    
+    width: 20vw;
+    max-height: 20vw;
+    min-height: 15vw;
+    align: center;
+    padding: 1rem;
+    margin: auto;
+
+}
+.card__button{
+    background-color: black;
+    color:cornsilk;
+    
+}
+.cardJsContainer{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 1rem; 
+    
+}
+#aboutUs > h2{
+    color: blueviolet;
+    font-weight: bolder;    
+}
+footer{
+    background-color: darkgrey;
+   
+   
+}
+.card-header{
+font-size: 22px;
+}
+ #act{
+     background-color: rgb(163, 161, 158);
+     color: black;     
+     font-weight: bold;     
+ }
+ #imp{
+    background-color: rgb(163, 161, 158);
+    color: black;     
+    font-weight: bold;     
+}
+#ren{
+    background-color: rgb(163, 161, 158);
+    color: black;     
+    font-weight: bold;     
+}
